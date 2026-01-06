@@ -96,7 +96,7 @@ const Contact = () => {
     {
       icon: <MapPin size={28} />,
       title: 'Location',
-      details: ['Banjul, The Gambia', 'West Africa'],
+      details: ['Tallinding,Kanifing Municipal Council,The Gambia',],
       bgColor: 'bg-primary'
     },
     {
