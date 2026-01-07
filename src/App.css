@@ -35,6 +35,8 @@
 
 .App-link {
   color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
