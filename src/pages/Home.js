@@ -53,7 +53,7 @@ const Home = () => {
       </div>
 
       {/* Highlights Section */}
-      <div className="py-5 bg-light">
+      <div className="py-5 custom-section">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-6 fw-bold">My Professional Pillars</h2>
