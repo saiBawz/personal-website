@@ -1,13 +1,21 @@
 // src/pages/Home.jsx
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Download, Briefcase, Users, ThumbsUp, Calendar, Code, Target, TrendingUp, MessageCircle } from 'lucide-react';
 
 const Home = () => {
+  
+    const [isDarkMode, setIsDarkMode] = useState(true);
+  const [fontSize, setFontSize] = useState(18);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  const increaseFont = () => setFontSize(prev => prev + 2);
+  const decreaseFont = () => setFontSize(prev => Math.max(12, prev - 2));
+  // ---------------------------
+
   const highlights = [
     { icon: <Briefcase size={32} />, title: 'Product Manager Intern', description: 'At BayKart', color: 'primary' },
-    { icon: <Code size={32} />, title: 'Full-Stack Dev', description: 'Building web solutions', color: 'info' },
-    { icon: <Target size={32} />, title: 'Data Analyst', description: 'Data-driven insights', color: 'success' },
-    { icon: <Users size={32} />, title: 'Community', description: 'Mentoring & workshops', color: 'warning' },
+    // ... rest of your highlights ...
   ];
 
   const softSkills = [
@@ -18,7 +26,23 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <div className={isDarkMode ? 'home-container' : 'home-container light-mode'} 
+       style={{ fontSize: `${fontSize}px` }}>
+        {/* Floating Menu */}
+    <div className="floating-accessibility-menu">
+       <button onClick={toggleTheme} title="Toggle Theme">
+         {isDarkMode ? '🌞' : '🌙'}
+       </button>
+       <button onClick={increaseFont} title="Increase Font">A+</button>
+       <button onClick={decreaseFont} title="Decrease Font">A-</button>
+    </div>
+        <div className="container pt-4 d-flex justify-content-end gap-2">
+       <button onClick={toggleTheme} className="btn btn-outline-secondary">
+         {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
+       </button>
+       <button onClick={increaseFont} className="btn btn-outline-secondary">A+</button>
+       <button onClick={decreaseFont} className="btn btn-outline-secondary">A-</button>
+    </div>
       {/* Hero Section */}
       <div className="container py-5 text-center">
         <div>
@@ -37,7 +61,7 @@ const Home = () => {
             <img 
               src={require('../assets/sai-profile-pic.JPG')}
               alt="Sainabou Bawor"
-              className="rounded-circle shadow-lg"
+              className="rounded-circle shadow-lg profile-img-custom"
               style={{ width: '400px', height: '400px', objectFit: 'cover' }}
             />
           </div>
