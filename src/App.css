@@ -1,7 +1,15 @@
 :root {
-  --bg-color: #0f172a;       /* Deep Midnight Blue */
-  --accent-color: #38bdf8;   /* Bright Sky Blue */
-  --text-primary: #f8fafc;   /* Almost White */
+  --bg-color: #0f172a;
+  --accent-color: #38bdf8;
+  --text-primary: #f8fafc;
+  --font-size: 18px; /* Added: Base font size variable */
+}
+
+/* Added: This class will be triggered by your button in App.js */
+.light-mode {
+  --bg-color: #f8fafc;
+  --text-primary: #0f172a;
+  --accent-color: #0284c7;
 }
 
 
@@ -29,8 +37,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: var(--font-size);
   color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .App-link {
@@ -46,4 +55,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+/* This ensures Bootstrap containers use your theme colors */
+.container, .custom-section {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* This ensures your cards also change theme */
+.card {
+  background-color: var(--card-bg, #1e293b); /* Fallback to a dark slate */
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.light-mode .card {
+  --card-bg: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Fix for muted text visibility */
+.text-muted {
+  color: var(--text-primary) !important;
+  opacity: 0.7;
+}
+/* Add this to App.css to make font-scaling work */
+h1.display-4 {
+  font-size: 3.5rem; /* rem scales based on the root font size */
+}
+
+p.lead {
+  font-size: 1.25rem;
+}
+.controls {
+  margin: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.controls button:hover {
+  background: var(--accent-color);
+  color: white;
 }
