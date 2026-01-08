@@ -1,0 +1,45 @@
+/* - MOBILE MENU CUSTOMIZATION -*/
+
+/* left-aligned, compact menu on mobile */
+@media (max-width: 992px) {
+
+    /* bootstrap lg breakpoint */
+    .navbar-collapse {
+        width: auto;
+        /* don't take full width */
+        text-align: left;
+        /* align menu to left */
+        background-color: #1a1a1a;
+        /* optional dark panel */
+        padding: 1rem;
+        /* add spacing */
+        border-radius: 8px;
+        /* rounded panel */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        /* vertical stacked items */
+        align-items: flex-start;
+        /* left-aligned */
+    }
+
+    .navbar-nav .nav-link {
+        padding-left: 0.5rem;
+        /* reduce spacing */
+        padding-right: 0.5rem;
+        width: 100%;
+        /* stretch full width of panel */
+    }
+
+    .navbar-nav .nav-link.active {
+        width: auto;
+        /* let active button auto width */
+    }
+}
+
+/* optional hover effect for links */
+.nav-link.hover-opacity:hover {
+    opacity: 0.8;
+    transition: 0.2s;
+}
