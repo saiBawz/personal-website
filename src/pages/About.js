@@ -28,6 +28,7 @@ const About = () => {
   const competencies = [
     'Presentation & Public Speaking',
     'Negotiation & Influence',
+    'Operations & Budgeting',
     'Time Management',
     'Critical Thinking',
     'Conflict Resolution',
@@ -37,15 +38,27 @@ const About = () => {
   ];
 
   const education = [
-    { title: 'BSc Information System', desc: 'University of The Gambia' },
-    { title: 'Introduction to CyberSecurity', desc: 'CISCO Networking Academy' },
-    { title: 'ICT Summer BootCamp', desc: 'University of The Gambia' },
-    { title: 'Mobile App Development', desc: 'GamChix' },
+    { title: 'BSc in Information Systems', desc: 'University of The Gambia', icon: <BookOpen size={20} /> },
+  ];
+  //  Certifications
+  const certifications = [
+    { title: 'CyberSecurity Fundamentals', desc: 'CISCO Networking Academy', icon: <Award size={20} /> },
+    { title: 'ICT Summer BootCamp', desc: 'University of The Gambia', icon: <Award size={20} /> },
+    { title: 'Mobile App Development', desc: 'GamChix', icon: <Award size={20} /> },
+  ];
+
+  // Entrepreneurial Experience (Catering)
+  const entrepreneurialExp = [
+    { 
+      title: 'Lead Caterer & Founder', 
+      desc: 'Part-time Venture | Operations, Customer Service & Budgeting', 
+      icon: <TrendingUp size={20} /> 
+    }
   ];
 
   return (
     <div>
-      <div className="py-5 py-lg-6 bg-light bg-gradient-light">
+      <div className="py-5 py-lg-6 bg-gradient-light">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-8 col-xl-7">
@@ -73,22 +86,22 @@ const About = () => {
                 <div className="mt-5">
                   <h5 className="mb-4 d-flex align-items-center">
                     <BookOpen className="me-2 text-primary" size={24} />
-                    Education & Certifications
+                    Education & Certifications & Entrepreneurship
                   </h5>
                   <div className="row g-3">
-                    {education.map((item, index) => (
-                      <div className="col-md-6" key={index}>
-                        <div className="d-flex align-items-start p-3 bg-white rounded shadow-sm">
-                          <div className="me-3 text-primary">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <h6 className="mb-1">{item.title}</h6>
-                            <p className="text-muted mb-0 small">{item.desc}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                    {[...education, ...certifications, ...entrepreneurialExp].map((item, index) => (
+                    <div className="col-md-6" key={index}>
+        <div className="d-flex align-items-start p-3 bg-white rounded shadow-sm border-start border-primary border-4">
+          <div className="me-3 text-primary">
+            {item.icon}
+          </div>
+          <div>
+            <h6 className="mb-1 fw-bold">{item.title}</h6>
+            <p className="text-muted mb-0 small">{item.desc}</p>
+          </div>
+        </div>
+      </div>
+                  ))}
                   </div>
                 </div>
               </div>
@@ -120,7 +133,7 @@ const About = () => {
       </div>
 
       {/* Core Competencies */}
-      <div className="py-5 bg-light">
+      <div className="py-5">
         <div className="container">
           <div className="text-center mb-5">
             <h3 className="mb-3">Additional Competencies</h3>
