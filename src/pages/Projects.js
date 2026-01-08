@@ -7,21 +7,17 @@ const Projects = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="py-5 bg-light bg-gradient-light">
+      <div className="py-5" style={{ backgroundColor: 'var(--header-bg)', color: 'var(--card-text)' }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-8">
               <h1 className="display-4 fw-bold mb-3">
-                Experiences & <span className="text-gradient-primary">Contributions</span>
+                Experiences & <span className="text-primary">Contributions</span>
               </h1>
-              <p className="lead mb-0">
-                A comprehensive overview of my professional journey, key achievements, 
-                and impactful contributions across product management and data analytics.
+              <p className="lead mb-0 opacity-75" style={{ color: 'var(--text-primary)' }}>
+                A comprehensive overview of my professional journey and key achievements.
               </p>
             </div>
           </div>
-        </div>
-      </div>
+  
 
       {/* Professional Journey Timeline */}
       <div className="py-5 bg-white">
@@ -68,10 +64,10 @@ const Projects = () => {
                         </div>
                       </div>
                       <div className="col-md-9">
-                        <div className="card border-0 shadow-sm">
+                        <div className="card border-0 shadow-sm custom card">
                           <div className="card-body p-4">
-                            <h5 className="mb-2">{exp.title}</h5>
-                            <p className="text-muted mb-3">{exp.desc}</p>
+                            <h5 className="mb-2 fw-bold">{exp.title}</h5>
+                            <p className="opacity-75 mb-3">{exp.desc}</p>
                             <div className="d-flex flex-column gap-2">
                               {exp.achievements.map((achievement, idx) => (
                                 <div key={idx} className="d-flex align-items-start">
@@ -92,7 +88,7 @@ const Projects = () => {
       </div>
 
       {/* Contributions Section */}
-      <div className="py-5 bg-light">
+      <div className="py-5">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-6 fw-bold mb-3">My Contributions</h2>
