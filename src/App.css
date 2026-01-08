@@ -88,6 +88,34 @@ h1.display-4 {
 p.lead {
   font-size: 1.25rem;
 }
+.floating-accessibility-menu {
+  position: fixed; /* This "fixes" it to the screen, not the page */
+  top: 100px;      /* Distance from the top of the window */
+  right: 20px;     /* Distance from the right edge */
+  display: flex;
+  flex-direction: column; 
+  gap: 12px;
+  z-index: 9999;   /* This keeps it on top of everything else */
+}
+
+.floating-accessibility-menu button {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--bg-color);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.floating-accessibility-menu button:hover {
+  transform: scale(1.1);
+  background: var(--accent-color);
+  color: white;
+}
+
 .controls {
   margin: 20px;
   display: flex;
@@ -107,4 +135,139 @@ p.lead {
 .controls button:hover {
   background: var(--accent-color);
   color: white;
+}
+/* --- Optimized Card Theme --- */
+/* Use your theme variables instead of hardcoded colors */
+.card, .bg-white.rounded.shadow-sm {
+  background-color: var(--card-bg, #1e293b) !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* This ensures ALL text inside these cards follows the theme variable */
+.card *, .bg-white.rounded.shadow-sm * {
+  color: var(--text-primary) !important;
+}
+
+/* Specific styling for descriptions to make them slightly softer but still readable */
+.card p, .card .small, .card .text-muted,
+.bg-white.rounded.shadow-sm p, .bg-white.rounded.shadow-sm .small {
+  opacity: 0.8;
+  color: var(--text-primary) !important;
+}
+
+/* Keep icons vibrant blue in both modes */
+.text-primary, svg {
+  color: var(--accent-color) !important;
+}
+
+/* --- Light Mode Card Variable --- */
+.light-mode .card, .light-mode .bg-white.rounded.shadow-sm {
+  --card-bg: #ffffff; /* White background in light mode */
+  /* --text-primary is already handled by your .light-mode block */
+}
+/* --- FIX FOR WHITE STRIPES/GAPS --- */
+
+/* 1. Force Bootstrap background utilities to be transparent 
+   so the main theme background shows through */
+
+.bg-gradient-light, 
+section, 
+.py-5, 
+.py-lg-6 {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+/* Ensure the container is the source of truth for font size */
+.home-container {
+  font-size: var(--font-size) !important;
+}
+
+/* Headings should scale proportionally (e.g., 2.5 times the base size) */
+.home-container h1, .home-container .display-4 { 
+  font-size: 3em !important; 
+}
+
+.home-container h2, .home-container .display-6 { 
+  font-size: 2em !important; 
+}
+
+/* Force all standard text to follow the variable exactly */
+.home-container p, 
+.home-container span, 
+.home-container .card-body,
+.home-container li {
+  font-size: var(--font-size) !important;
+}
+
+/* 2. Ensure the main container actually fills the background */
+.home-container, 
+.App, 
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove default margins that create white "cracks" between sections */
+.container-fluid, 
+.row, 
+section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* Fix for white strips between sections */ 
+.bg-white {
+  background-color: transparent !important;
+}
+
+/* Ensure the main container fills the screen background */
+.home-container {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+/* Make sure the Header text is visible in Dark Mode */
+.home-container:not(.light-mode) .navbar-brand,
+.home-container:not(.light-mode) .nav-link {
+  color: #ffffff !important;
+}
+/* Force visibility for all major text elements in dark mode */
+.home-container:not(.light-mode) h1, 
+.home-container:not(.light-mode) h2, 
+.home-container:not(.light-mode) h3, 
+.home-container:not(.light-mode) p, 
+.home-container:not(.light-mode) span,
+.home-container:not(.light-mode) .nav-link {
+    color: #ffffff !important;
+}
+
+/* Ensure the layout wrapper is actually taking up space */
+.layout-wrapper {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+}
+/* --- GLOBAL LIGHT MODE TEXT FIX --- */
+
+/* Targets the Header, Home text, and standard tags when light-mode is active */
+.light-mode, .home-content,
+.light-mode .home-content h1, 
+.light-mode .home-content .lead { 
+  color: #212529 !important;
+     
+}
+
+/* Specifically ensure the Header brand name is visible */
+.light-mode .navbar-toggler {
+   border-color: rgba(0,0,0,0.1) !important;
+}
+.light-mode .navbar-toggler-icon {
+  filter: invert(0) !important;
+}
+/* Smooth transition when switching modes */
+h1, h2, p, .nav-link, .navbar-brand {
+    transition: color 0.3s ease-in-out;
 }
