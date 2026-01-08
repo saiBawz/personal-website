@@ -3,50 +3,31 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Download, Briefcase, Users, ThumbsUp, Calendar, Code, Target, TrendingUp, MessageCircle } from 'lucide-react';
 
-const Home = () => {
+const Home = ({ isDarkMode, fontSize, toggleTheme, increaseFont, decreaseFont }) => {
   
-    const [isDarkMode, setIsDarkMode] = useState(true);
-  const [fontSize, setFontSize] = useState(18);
-
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
-  const increaseFont = () => setFontSize(prev => prev + 2);
-  const decreaseFont = () => setFontSize(prev => Math.max(12, prev - 2));
-  // ---------------------------
+   
 
   const highlights = [
     { icon: <Briefcase size={32} />, title: 'Product Manager Intern', description: 'At BayKart', color: 'primary' },
-    // ... rest of your highlights ...
+  
   ];
 
-  const softSkills = [
-    'Strategic Thinking',
-    'Communication',
-    'Problem Solving',
-    'Adaptability'
-  ];
+  
 
   return (
     <div className={isDarkMode ? 'home-container' : 'home-container light-mode'} 
-       style={{ fontSize: `${fontSize}px` }}>
-        {/* Floating Menu */}
-    <div className="floating-accessibility-menu">
-       <button onClick={toggleTheme} title="Toggle Theme">
-         {isDarkMode ? '🌞' : '🌙'}
-       </button>
-       <button onClick={increaseFont} title="Increase Font">A+</button>
-       <button onClick={decreaseFont} title="Decrease Font">A-</button>
-    </div>
-        <div className="container pt-4 d-flex justify-content-end gap-2">
-       <button onClick={toggleTheme} className="btn btn-outline-secondary">
-         {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
-       </button>
-       <button onClick={increaseFont} className="btn btn-outline-secondary">A+</button>
-       <button onClick={decreaseFont} className="btn btn-outline-secondary">A-</button>
-    </div>
+       style={{ 
+        '--font-size': `${fontSize}px`, // This "injects" the state into CSS
+      fontSize: 'var(--font-size)'    // This applies it to the container
+    }}
+  >
+      
+    
+      
       {/* Hero Section */}
       <div className="container py-5 text-center">
         <div>
-          <h1 className="display-4 fw-bold mb-3">
+          <h1 className="display-4 fw-bold " style={{color: 'inherit'}}>
             Hi, I'm Sainabou Bawor
           </h1>
           <p className="lead mb-4">
@@ -91,7 +72,7 @@ const Home = () => {
                     {item.icon}
                   </div>
                   <h5 className="fw-bold mb-2">{item.title}</h5>
-                  <p className="text-muted mb-0">{item.description}</p>
+                  <p className={isDarkMode ? 'text-light' : 'text-muted'}>{item.description}</p>
                 </div>
               </div>
             ))}
@@ -102,7 +83,7 @@ const Home = () => {
       
 
       {/* Featured Projects Preview */}
-      <div className="py-5 bg-light">
+      <div className="py-5">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-6 fw-bold mb-3">Featured Work</h2>
@@ -175,7 +156,13 @@ const Home = () => {
         </div>
       </div>
 
-      
+      <div className="floating-accessibility-menu">
+       <button onClick={toggleTheme} title="Toggle Theme">
+         {isDarkMode ? '🌞' : '🌙'}
+       </button>
+       <button onClick={increaseFont} title="Increase Font">A+</button>
+       <button onClick={decreaseFont} title="Decrease Font">A-</button>
+    </div>
     </div>
   );
 };
