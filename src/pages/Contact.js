@@ -94,11 +94,14 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <MapPin size={28} />,
-      title: 'Location',
-      details: ['Tallinding,Kanifing Municipal Council,The Gambia',],
-      bgColor: 'bg-primary'
-    },
+    icon: <MapPin size={28} />,
+    title: 'Location',
+    // We update the detail to your Plus Code
+    details: ['C8GF+7R2, Bundung', 'The Gambia'],
+    // Added the Google Maps link here
+    link: 'https://www.google.com/maps/search/?api=1&query=C8GF%2B7R2',
+    bgColor: 'bg-primary'
+  },
     {
       icon: <Mail size={28} />,
       title: 'Email',
@@ -118,7 +121,7 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="py-5 bg-light bg-gradient-light">
+      <div className="py-5">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-8">
